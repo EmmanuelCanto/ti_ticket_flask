@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Lateral Desplegable</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        /* Contenedor del menú */
+        .sidebar {
+            width: 60px; /* Menú cerrado */
+            height: 100vh;
+            background: #2c3e50;
+            color: white;
+            overflow: hidden;
+            transition: width 0.3s ease-in-out;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Cuando el menú está abierto */
+        .sidebar.open {
+            width: 200px; /* Menú abierto */
+        }
+
+        /* Botón para abrir/cerrar */
+        .toggle-btn {
+            background: #1abc9c;
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            font-size: 18px;
+        }
+
+        /* Estilo de la imagen de usuario */
+        .user-profile {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            flex-direction: column;
+        }
+
+        .user-profile img {
+            width: 30px; /* Tamaño cuando el menú está compacto */
+            height: 30px;
+            border-radius: 50%;
+            transition: width 0.3s, height 0.3s;
+        }
+
+        /* Texto del usuario oculto cuando el menú está cerrado */
+        .user-profile span {
+            display: none;
+            transition: opacity 0.3s;
+            margin-top: 10px;
+        }
+
+        /* Mostrar texto del usuario y agrandar imagen cuando el menú está abierto */
+        .sidebar.open .user-profile img {
+            width: 120px;
+            height: 120px;
+        }
+
+        .sidebar.open .user-profile span {
+            display: inline;
+            opacity: 1;
+        }
+
+        /* Íconos y texto del menú */
+        .menu-item {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            text-decoration: none;
+            color: white;
+            transition: background 0.3s;
+        }
+
+        .menu-item:hover {
+            background: #34495e;
+        }
+
+        /* Íconos */
+        .menu-item i {
+            font-size: 20px;
+            width: 30px;
+            text-align: center;
+        }
+
+        /* Texto oculto cuando el menú está cerrado */
+        .menu-item span {
+            display: none;
+            transition: opacity 0.3s;
+        }
+
+        /* Mostrar texto cuando el menú está abierto */
+        .sidebar.open .menu-item span {
+            display: inline;
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Menú lateral -->
+    <div class="sidebar" id="sidebar">
+        <button class="toggle-btn" onclick="toggleMenu()">☰</button>
+        <div class="user-profile">
+            <img src="image.png" alt="foto de perfil" width="50">
+            <span>Emmanuel Canto</span>
+        </div>
+        <a href="#" class="menu-item"><i>🏠</i> <span>Inicio</span></a>
+        <a href="#" class="menu-item"><i>⚙️</i> <span>Configuraciones</span></a>
+        <a href="#" class="menu-item"><i>📄</i> <span>Documentos</span></a>
+        <a href="#" class="menu-item"><i>📞</i> <span>Contacto</span></a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("sidebar").classList.toggle("open");
+        }
+    </script>
+
+</body>
+</html>
